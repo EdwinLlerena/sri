@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Docu - Mail</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-lg mt-4">
+    <div class="card">
+      <div class="card-header">
+        Documentos Electronicos 
+      </div>
+      <div class="card-body">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha emisión</th>
+                    <th scope="col">Tipo y serie de comprobante</th>
+                    <th scope="col">Razón Social</th>
+                    <th scope="col">Nro. Autorización</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% documentos.forEach(function(documento) { %>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><%= documento.fechaEmision %></td>
+                    <td><%= documento.numeroDocuemnto %></td>
+                    <td><%= documento.razonSocialComprador %></td>
+                    <td>
+                      <%= documento.numeroAutorizacion %>
+                    </td>
+                    <td><a onclick="Mail('<%= documento.numeroAutorizacion %>');" class="btn btn-sm btn-outline-info" >Enviar Mail</a></td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+      </div>
+    </div>
+    <div class="toast align-items-center text-dark bg-info border-0" role="alert" aria-live="assertive"
+      aria-atomic="true" id="myToast">    
+        <div class="toast-body text-center" id="mensaje" >
+          
+        </div>   
+
+    </div>
+
+  </div>
+
+  <script>
+  
+    function Mail(id) {
+      const tost= document.getElementById('myToast')
+      let mensaje = document.getElementById('mensaje')
+      const myToast = new bootstrap.Toast(tost,{delay: 2000})
+      console.log(id)
+      fetch(`http://localhost:3000/email/${id}`)
+        .then(response => response.json())
+        .then(
+          //data => console.log(data)
+           
+          //data=> myToast.show()
+           data=>{
+            console.log(data)
+            if (data==='ok') {
+              mensaje.innerHTML='Correo Enviado!!'  
+              myToast.show()            
+            } else{
+            mensaje.innerHTML='No se pudo enviar el correo'
+             myToast.show()
+           } 
+           }
+
+        )
+
+          
+    }
+
+   
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
