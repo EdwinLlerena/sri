@@ -104,7 +104,7 @@ function leerDescont(urlFile) {
       const comprobante = result.autorizacion.comprobante[0]
       //console.log(comprobante)
       let datos = comprobante.replace(/(\r\n|\n|\r)/gm, "")
-      //console.log(datos)
+      console.log(datos)
       xml.parseString(datos, (err,res)=>{
           Object.keys(res).map(key =>{
            const value=res[key]

@@ -1,17 +1,6 @@
 {
   "documentos": [
     {
-      "numeroAutorizacion": "2109202201180382279800120010020000000011234567818",
-      "fechaAutorizacion": "21/09/2022 20:41:02.000",
-      "razonSocialEmisor": "LLERENA CARVAJAL EDWIN MARCELO",
-      "codDoc": "01",
-      "numeroDocuemnto": "001002-000000001",
-      "fechaEmision": "21/09/2022",
-      "razonSocialComprador": "COOPERATIVA DE AHORRO Y CREDITO SUMAK SAMY LTDA.",
-      "importeTotal": "1332.67",
-      "Email": "coacsumaksamy@hotmail.com"
-    },
-    {
       "numeroAutorizacion": "0510202201180382279800120010020000000031234567818",
       "fechaAutorizacion": "05/10/2022 14:09:48.000",
       "razonSocialEmisor": "LLERENA CARVAJAL EDWIN MARCELO",
@@ -28,6 +17,17 @@
       "razonSocialEmisor": "LLERENA CARVAJAL EDWIN MARCELO",
       "codDoc": "01",
       "numeroDocuemnto": "001002-000000002",
+      "fechaEmision": "21/09/2022",
+      "razonSocialComprador": "COOPERATIVA DE AHORRO Y CREDITO SUMAK SAMY LTDA.",
+      "importeTotal": "1332.67",
+      "Email": "coacsumaksamy@hotmail.com"
+    },
+    {
+      "numeroAutorizacion": "2109202201180382279800120010020000000011234567818",
+      "fechaAutorizacion": "21/09/2022 20:41:02.000",
+      "razonSocialEmisor": "LLERENA CARVAJAL EDWIN MARCELO",
+      "codDoc": "01",
+      "numeroDocuemnto": "001002-000000001",
       "fechaEmision": "21/09/2022",
       "razonSocialComprador": "COOPERATIVA DE AHORRO Y CREDITO SUMAK SAMY LTDA.",
       "importeTotal": "1332.67",
