@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer';
 
 
 const createTrans =()=>{
-  console.log(process.env.HOST_EMAIL,process.env.PUERTO_EMAIL,process.env.SECURE_EMAIL,process.env.USER_EMAIL,process.env.PASS_EMAILL)
-  const transport = nodemailer.createTransport({
+
+    const transport = nodemailer.createTransport({
     host: process.env.HOST_EMAIL,
     port: process.env.PUERTO_EMAIL,
     secure:process.env.SECURE_EMAIL,
@@ -34,6 +34,13 @@ const sendMail =async(docu)=>{
           </br>${docu.razonSocialEmisor}
 
     `,
+     attachments: [
+        {
+            filename: 'mailtrap.xml',
+            path: process.env.DIR_ARCHIVO+`${docu.numeroAutorizacion}.xml`,
+            cid: 'uniq-mailtrap.xml'
+        }
+    ]
   })
   console.log("Message sent:%s",info)
   return 'ok'
