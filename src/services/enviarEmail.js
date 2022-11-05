@@ -1,13 +1,16 @@
 import { json } from 'express';
 import nodemailer from 'nodemailer';
 
+
 const createTrans =()=>{
+  console.log(process.env.PASS_GMAIL)
   const transport = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host: process.env.HOST_GMAIL,
+    port: process.env.PUERTO_GMAIL,
+    secure:true,
     auth: {
-    user: "f87165c1e5c225",
-    pass: "9a5be495525a7a"
+    user: process.env.USER_GMAIL,
+    pass: process.env.PASS_GMAIL
   }
   });
   return transport
@@ -19,8 +22,8 @@ const sendMail =async(docu)=>{
   try {   
   
   const info =await transport.sendMail({
-    from: ' "Edwin Foo" <info@edw.com>',
-    to:`${docu.Email}`,
+    from: ' "SENDEDW" <info@edw.com>',
+    to:`${docu.Email};${process.env.USER_GMAIL}`,
     subject:"Comprobantes Electrónicos - FACTURA",
     html:`</br>Estimado(a):${docu.razonSocialComprador} 
           </br>Reciba un cordial saludo. Nos complace informarle que hemos generado un comprobante electrónico con el siguiente detalle:

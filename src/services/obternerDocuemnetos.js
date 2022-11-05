@@ -1,6 +1,6 @@
 import  fs  from "fs";
 import xml2js from "xml2js";
-import { join,dirname } from 'path'
+import path, { join,dirname } from 'path'
 import {fileURLToPath} from 'url';
 import { json } from "express";
 import { getConection } from "../database.js";
@@ -11,7 +11,7 @@ const xml = new xml2js.Parser()
 //const _url= '/Users/edwinllerena/SRI/DOCUMENTOS/AUTORIZADOS/'
 //const _url = '/Users/edwinllerena/nn2/'
 const _url= process.env.DIR_ARCHIVO
-console.log(_url)
+console.log(`la ruta fisica de los archivos ${_url}`)
 
 export function crearDocuemntos() {
   
@@ -46,7 +46,12 @@ export function crearDocuemntos() {
      files.forEach( (file)=>{     
 
         const pht=_url+file
+       // console.log(pht)
+        const a = path.extname(pht)
+       if (a==='.xml') {
         leerDescont(pht)
+       }
+        
 
     })
 
@@ -75,11 +80,12 @@ function leerDescont(urlFile) {
   let Email = ""
   
 
-   const a= fs.readFile(urlFile,(err,data)=>{
+    fs.readFile(urlFile,(err,data)=>{
+    //console.log(urlFile)
       let newDocument = new Object(); 
      xml.parseString(data,  (err,result) =>{
      
-      
+      //console.log(result)
        numeroAutorizacion=result.autorizacion.numeroAutorizacion[0]  
 
       fs.readFile('./db.json', async (err, data) => {

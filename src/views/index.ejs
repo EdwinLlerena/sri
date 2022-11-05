@@ -23,7 +23,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Envio de Email</a>
+      <a class="navbar-brand fs-6" href="#">SENDEDW- <span class="fw-bold"></span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -119,8 +119,10 @@
               mensaje.innerHTML='Correo Enviado!!'  
               myToast.show()            
             } else{
-            mensaje.innerHTML='No se pudo enviar el correo'
-             myToast.show()
+              sp.children[0].classList.add('visually-hidden');
+              sp.children[1].classList.remove('visually-hidden'); 
+              mensaje.innerHTML='No se pudo enviar el correo'
+              myToast.show()
            } 
            }
 

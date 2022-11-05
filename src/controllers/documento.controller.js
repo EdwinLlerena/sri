@@ -9,7 +9,7 @@ export const homeIndex=(req,res)=>{
   crearDocuemntos()
   const puerto= process.env.PORT
   const documentos=getConection().data.documentos;
-  console.log(documentos);
+  //console.log(documentos);
   res.render('index',{documentos,puerto})
 }
 
